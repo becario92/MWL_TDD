@@ -13,4 +13,9 @@ public class DeckToWasteMoveController {
 		return null;
 	}
 
+	public int sizeDeck() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

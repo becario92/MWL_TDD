@@ -8,12 +8,14 @@ public class DeckToWasteMoveControllerTest {
 	
 	private int sizeWaste;
 	private ArrayList<Integer> sizeFoundations;
+	private int sizeDeck;
 	
 	@Before
 	public void before() {
 		deckToWasteMoveController = new DeckToWasteMoveController();
 		sizeWaste = deckToWasteMoveController.sizeWaste();
 		sizeFoundations = deckToWasteMoveController.sizeFoundations();
+		sizeDeck = deckToWasteMoveController.sizeDeck();
 	}
 
 }
