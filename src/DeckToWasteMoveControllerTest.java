@@ -9,22 +9,23 @@ public class DeckToWasteMoveControllerTest {
 	
 	private DeckToWasteMoveController deckToWasteMoveController;
 	
-	//private int sizeWaste;
-	//private ArrayList<Integer> sizeFoundations;
 	private int sizeDeck;
+	private int sizeWaste;
+	//private ArrayList<Integer> sizeFoundations;
 	
 	@Before
 	public void before() {
 		deckToWasteMoveController = new DeckToWasteMoveController();
-		//sizeWaste = deckToWasteMoveController.sizeWaste();
-		//sizeFoundations = deckToWasteMoveController.sizeFoundations();
 		sizeDeck = deckToWasteMoveController.getSizeDeck();
+		sizeWaste = deckToWasteMoveController.getSizeWaste();
+		//sizeFoundations = deckToWasteMoveController.sizeFoundations();
 	}
 	
 	@Test
 	public void moveTest() {
 		deckToWasteMoveController.move();
 		assertEquals(sizeDeck - 3, deckToWasteMoveController.getSizeDeck());
+		assertEquals(sizeWaste + 3, deckToWasteMoveController.getSizeWaste());
 	}
 
 }
