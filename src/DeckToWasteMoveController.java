@@ -8,6 +8,7 @@ public class DeckToWasteMoveController {
 	private int sizeWaste;
 	private ArrayList<Integer> sizeFoundations;
 	private Stack<Card> deckStack;
+	private Stack<Card> wasteStack;
 	
 	DeckToWasteMoveController() {
 		// en este movimiento, el deck puede tener de 0 a 24 cartas
@@ -16,8 +17,11 @@ public class DeckToWasteMoveController {
 		sizeWaste = 24 - sizeDeck;
 		sizeFoundations = new ArrayList<Integer>();
 		
+		Card movedCard = new Card();
 		deckStack = new Stack<Card>();
-		deckStack.push(new Card());
+		deckStack.push(movedCard);
+		wasteStack = new Stack<Card>();
+		wasteStack.push(movedCard);
 	}
 
 	public Card move() {
@@ -51,7 +55,7 @@ public class DeckToWasteMoveController {
 		this.sizeFoundations = sizeFoundations;
 	}
 
-	public Card getTopCardFromWaste() {
+	public Card getTopCardFromDeck() {
 		return deckStack.peek();
 	}
 
@@ -61,6 +65,10 @@ public class DeckToWasteMoveController {
 
 	public void setWasteStack(Stack<Card> deckStack) {
 		this.deckStack = deckStack;
+	}
+
+	public Card getTopCardFromWaste() {
+		return wasteStack.peek();
 	}
 
 }

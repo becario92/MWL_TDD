@@ -19,14 +19,18 @@ public class DeckToWasteMoveControllerTest {
 		int sizeDeck = deckToWasteMoveController.getSizeDeck();
 		int sizeWaste = deckToWasteMoveController.getSizeWaste();
 		ArrayList<Integer> sizeFoundations = deckToWasteMoveController.getSizeFoundations();
-		Card topCardFromDeck = deckToWasteMoveController.getTopCardFromWaste();
+		Card topCardFromDeck = deckToWasteMoveController.getTopCardFromDeck();
 		
 		Card movedCard = deckToWasteMoveController.move();
+		
+		Card topCardFromWaste = deckToWasteMoveController.getTopCardFromWaste();
 		
 		assertEquals(sizeDeck - 1, deckToWasteMoveController.getSizeDeck());
 		assertEquals(sizeWaste + 1, deckToWasteMoveController.getSizeWaste());
 		assertEquals(sizeFoundations, deckToWasteMoveController.getSizeFoundations());
+		
 		assertEquals(topCardFromDeck, movedCard);
+		assertEquals(movedCard, topCardFromWaste);
 	}
 
 }
