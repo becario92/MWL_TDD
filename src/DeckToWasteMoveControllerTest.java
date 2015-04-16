@@ -20,6 +20,7 @@ public class DeckToWasteMoveControllerTest {
 		int sizeWaste = deckToWasteMoveController.getSizeWaste();
 		ArrayList<Integer> sizeFoundations = deckToWasteMoveController.getSizeFoundations();
 		Card topCardFromDeck = deckToWasteMoveController.getTopCardFromDeck();
+		assertFalse(topCardFromDeck.isUncovered());
 		
 		Card movedCard = deckToWasteMoveController.move();
 		

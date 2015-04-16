@@ -1,8 +1,18 @@
 
 public class Card {
 
-	public boolean uncovered() {
-		return true;
+	private boolean uncovered;
+	
+	public Card(boolean uncovered) {
+		this.uncovered = uncovered;
+	}
+
+	public boolean isUncovered() {
+		return uncovered;
+	}
+
+	public void setUncovered(boolean uncovered) {
+		this.uncovered = uncovered;
 	}
 
 }

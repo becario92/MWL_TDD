@@ -17,18 +17,17 @@ public class DeckToWasteMoveController {
 		sizeWaste = 24 - sizeDeck;
 		sizeFoundations = new ArrayList<Integer>();
 		
-		Card movedCard = new Card();
 		deckStack = new Stack<Card>();
-		deckStack.push(movedCard);
+		deckStack.push(new Card(false));
 		wasteStack = new Stack<Card>();
-		wasteStack.push(movedCard);
 	}
 
 	public Card move() {
 		// TODO Auto-generated method stub
 		sizeDeck -= 1;
 		sizeWaste += 1;
-		return deckStack.peek();
+		wasteStack.push(deckStack.pop());
+		return wasteStack.peek();
 	}
 
 	public int getSizeDeck() {
