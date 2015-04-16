@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 
 public class DeckToWasteMoveController {
@@ -6,6 +7,7 @@ public class DeckToWasteMoveController {
 	private int sizeDeck;
 	private int sizeWaste;
 	private ArrayList<Integer> sizeFoundations;
+	private Stack<Card> deckStack;
 	
 	DeckToWasteMoveController() {
 		// en este movimiento, el deck puede tener de 0 a 24 cartas
@@ -13,12 +15,16 @@ public class DeckToWasteMoveController {
 		// no necesariamente tendrá ese número de cartas, pero para los test es suficiente
 		sizeWaste = 24 - sizeDeck;
 		sizeFoundations = new ArrayList<Integer>();
+		
+		deckStack = new Stack<Card>();
+		deckStack.push(new Card());
 	}
 
-	public void move() {
+	public Card move() {
 		// TODO Auto-generated method stub
-		sizeDeck -= 3;
-		sizeWaste += 3;
+		sizeDeck -= 1;
+		sizeWaste += 1;
+		return deckStack.peek();
 	}
 
 	public int getSizeDeck() {
@@ -43,6 +49,18 @@ public class DeckToWasteMoveController {
 
 	public void setSizeFoundations(ArrayList<Integer> sizeFoundations) {
 		this.sizeFoundations = sizeFoundations;
+	}
+
+	public Card getTopCardFromWaste() {
+		return deckStack.peek();
+	}
+
+	public Stack<Card> getWasteStack() {
+		return deckStack;
+	}
+
+	public void setWasteStack(Stack<Card> deckStack) {
+		this.deckStack = deckStack;
 	}
 
 }
