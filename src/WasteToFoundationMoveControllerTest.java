@@ -1,3 +1,8 @@
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +19,7 @@ public class WasteToFoundationMoveControllerTest {
 	@Test
 	public void moveTest() {
 		int sizeWaste = wasteToFoundationMoveController.getSizeWaste();
+		HashMap<Suit, Integer> sizeFoundations = wasteToFoundationMoveController.sizeFoundations();
 	}
 
 }
