@@ -32,6 +32,8 @@ public class DeckToWasteMoveControllerTest {
 		
 		assertEquals(topCardFromDeck, movedCard);
 		assertEquals(movedCard, topCardFromWaste);
+		
+		assertNull(deckToWasteMoveController.move());
 	}
 
 }

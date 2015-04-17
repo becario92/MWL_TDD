@@ -23,9 +23,10 @@ public class DeckToWasteMoveController {
 	}
 
 	public Card move() {
-		// TODO Auto-generated method stub
-		sizeDeck -= 1;
-		sizeWaste += 1;
+		if(deckStack.isEmpty())
+			return null;
+		sizeDeck--;
+		sizeWaste++;
 		wasteStack.push(deckStack.pop());
 		return wasteStack.peek();
 	}
