@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,7 @@ public class WasteToFoundationMoveControllerTest {
 	@Test
 	public void moveTest() {
 		int sizeWaste = wasteToFoundationMoveController.getSizeWaste();
-		HashMap<Suit, Integer> sizeFoundations = wasteToFoundationMoveController.sizeFoundations();
+		HashMap<Suit, Integer> sizeFoundationsStackBefore = wasteToFoundationMoveController.getSizeFoundationsStack();
 		
 		Card topCardFromWaste = wasteToFoundationMoveController.getTopCardFromWaste();
 		assertTrue(topCardFromWaste.isUncovered());
@@ -30,6 +31,15 @@ public class WasteToFoundationMoveControllerTest {
 		
 		assertEquals(sizeWaste - 1, wasteToFoundationMoveController.getSizeWaste());
 		assertEquals(topCardFromWaste, movedCard);
+		
+		HashMap<Suit, Integer> sizeFoundationsStackAfter = wasteToFoundationMoveController.getSizeFoundationsStack();
+		for(Suit suit : Suit.values()) {
+			if(suit.equals(movedCard.getSuit())) {
+				assertEquals(sizeFoundationsStackBefore.get(suit).intValue() + 1, sizeFoundationsStackAfter.get(suit).intValue());
+			} else {
+				assertEquals(sizeFoundationsStackBefore.get(suit).intValue(), sizeFoundationsStackAfter.get(suit).intValue());
+			}
+		}
 	}
 
 }
