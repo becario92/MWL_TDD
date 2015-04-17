@@ -40,6 +40,8 @@ public class WasteToFoundationMoveControllerTest {
 				assertEquals(sizeFoundationsStackBefore.get(suit).intValue(), sizeFoundationsStackAfter.get(suit).intValue());
 			}
 		}
+		
+		assertEquals(movedCard, wasteToFoundationMoveController.getFoundationsStack().get(movedCard.getSuit()).peek());
 	}
 
 }
