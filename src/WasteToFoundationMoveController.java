@@ -9,6 +9,11 @@ public class WasteToFoundationMoveController {
 	private HashMap<Suit, Integer> sizeFoundations;
 	private Stack<Card> wasteStack;
 	
+	WasteToFoundationMoveController() {
+		wasteStack = new Stack<Card>();
+		wasteStack.push(new Card(true));
+	}
+	
 	public void setSizeWaste(int sizeWaste) {
 		this.sizeWaste = sizeWaste;
 	}

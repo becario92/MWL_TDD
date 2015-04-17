@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +24,7 @@ public class WasteToFoundationMoveControllerTest {
 		HashMap<Suit, Integer> sizeFoundations = wasteToFoundationMoveController.sizeFoundations();
 		
 		Card topCardFromWaste = wasteToFoundationMoveController.getTopCardFromWaste();
+		assertTrue(topCardFromWaste.isUncovered());
 	}
 
 }
