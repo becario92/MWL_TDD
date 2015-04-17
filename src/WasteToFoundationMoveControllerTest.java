@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Test;
 
 
 public class WasteToFoundationMoveControllerTest {
@@ -8,6 +9,11 @@ public class WasteToFoundationMoveControllerTest {
 	@Before
 	public void before() {
 		wasteToFoundationMoveController = new WasteToFoundationMoveController();
+	}
+	
+	@Test
+	public void moveTest() {
+		int sizeWaste = wasteToFoundationMoveController.getSizeWaste();
 	}
 
 }
