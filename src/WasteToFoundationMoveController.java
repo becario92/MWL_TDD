@@ -31,4 +31,9 @@ public class WasteToFoundationMoveController {
 		return wasteStack.peek();
 	}
 
+	public Card move() {
+		sizeWaste--;
+		return null;
+	}
+
 }
