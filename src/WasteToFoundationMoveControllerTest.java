@@ -29,6 +29,7 @@ public class WasteToFoundationMoveControllerTest {
 		Card movedCard = wasteToFoundationMoveController.move();
 		
 		assertEquals(sizeWaste - 1, wasteToFoundationMoveController.getSizeWaste());
+		assertEquals(topCardFromWaste, movedCard);
 	}
 
 }

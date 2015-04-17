@@ -33,7 +33,7 @@ public class WasteToFoundationMoveController {
 
 	public Card move() {
 		sizeWaste--;
-		return null;
+		return wasteStack.peek();
 	}
 
 }
