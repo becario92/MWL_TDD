@@ -20,6 +20,8 @@ public class WasteToFoundationMoveControllerTest {
 	public void moveTest() {
 		int sizeWaste = wasteToFoundationMoveController.getSizeWaste();
 		HashMap<Suit, Integer> sizeFoundations = wasteToFoundationMoveController.sizeFoundations();
+		
+		Card topCardFromWaste = wasteToFoundationMoveController.getTopCardFromWaste();
 	}
 
 }

@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 
 public class WasteToFoundationMoveController {
 
 	private int sizeWaste;
 	private HashMap<Suit, Integer> sizeFoundations;
+	private Stack<Card> wasteStack;
 	
 	public void setSizeWaste(int sizeWaste) {
 		this.sizeWaste = sizeWaste;
@@ -18,6 +20,10 @@ public class WasteToFoundationMoveController {
 	public HashMap<Suit, Integer> sizeFoundations() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Card getTopCardFromWaste() {
+		return wasteStack.peek();
 	}
 
 }
