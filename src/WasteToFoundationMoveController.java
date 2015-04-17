@@ -41,6 +41,8 @@ public class WasteToFoundationMoveController {
 	}
 
 	public Card move() {
+		if(wasteStack.isEmpty())
+			return null;
 		sizeWaste--;
 		Suit suit = wasteStack.peek().getSuit();
 		foundationsStack.get(suit).push(wasteStack.pop());
