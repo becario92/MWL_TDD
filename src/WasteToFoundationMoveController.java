@@ -7,13 +7,6 @@ public class WasteToFoundationMoveController extends MoveController {
 		super();
 	}
 
-	public HashMap<Suit, Integer> getSizeFoundationsStack() {
-		HashMap<Suit, Integer> sizeFoundationsStack = new HashMap<Suit, Integer>();
-		for(Suit suit : Suit.values())
-			sizeFoundationsStack.put(suit, getFoundationsStack().get(suit).size());
-		return sizeFoundationsStack;
-	}
-
 	@Override
 	public boolean canMove(Stack<Card> from, Stack<Card> to) {
 		if(from.peek().getValue() == to.peek().getValue() + 1)

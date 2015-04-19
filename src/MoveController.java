@@ -33,6 +33,13 @@ public abstract class MoveController {
 
 	protected abstract boolean canMove(Stack<Card> from, Stack<Card> to);
 	
+	public HashMap<Suit, Integer> getSizeFoundationsStack() {
+		HashMap<Suit, Integer> sizeFoundationsStack = new HashMap<Suit, Integer>();
+		for(Suit suit : Suit.values())
+			sizeFoundationsStack.put(suit, getFoundationsStack().get(suit).size());
+		return sizeFoundationsStack;
+	}
+	
 	protected Stack<Card> getDeckStack() {
 		return deckStack;
 	}
