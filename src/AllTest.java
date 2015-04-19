@@ -68,6 +68,7 @@ public class AllTest {
 		assertEquals(topCardFromDeck, movedCard);
 		assertEquals(movedCard, topCardFromWaste);
 		
+		//se presupone que en este punto, waste no tiene cartas
 		assertNull(deckToWasteMoveController.move(deckToWasteMoveController.getDeckStack(), deckToWasteMoveController.getWasteStack()));
 	}
 
@@ -95,6 +96,7 @@ public class AllTest {
 		assertEquals(topCardFromWaste, movedCard);
 		assertEquals(movedCard, topCardFromFoundationOfTopCardFromWasteSuit);
 
+		//se presupone que en este punto, waste no tiene cartas
 		assertNull(wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack()));
 	}
 	
@@ -102,6 +104,8 @@ public class AllTest {
 	public void wasteToTableausMoveControllerTest() {
 		int sizeWaste = wasteToTableausMoveController.getWasteStack().size();
 		
+		Card topCardFromWaste = wasteToTableausMoveController.getWasteStack().peek();
+		assertTrue(topCardFromWaste.isUncovered());
 	}
 
 }
