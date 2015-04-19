@@ -100,6 +100,7 @@ public class AllTest {
 	
 	@Test
 	public void wasteToTableausMoveControllerTest() {
+		int sizeWaste = wasteToTableausMoveController.getWasteStack().size();
 		
 	}
 
