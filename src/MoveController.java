@@ -16,6 +16,9 @@ public abstract class MoveController {
 		
 		wasteStack = new Stack<Card>();
 		wasteStack.push(new Card(true, Suit.SPADES, 1));
+		wasteStack.push(new Card(true, Suit.DIAMONDS, 1));
+		wasteStack.push(new Card(true, Suit.SPADES, 2));
+		wasteStack.push(new Card(true, Suit.SPADES, 1));
 		
 		foundationsStack = new HashMap<Suit, Stack<Card>>();
 		for(Suit suit : Suit.values()) {

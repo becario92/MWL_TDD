@@ -1,7 +1,4 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,7 +93,10 @@ public class AllTest {
 		assertEquals(topCardFromWaste, movedCard);
 		assertEquals(movedCard, topCardFromFoundationOfTopCardFromWasteSuit);
 
-		//se presupone que en este punto, waste no tiene cartas
+		//se mueven el resto de cartas de waste para probar el caso de que se quede vacío
+		wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack());
+		wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack());
+		wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack());
 		assertNull(wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack()));
 	}
 
@@ -117,6 +117,13 @@ public class AllTest {
 		assertEquals(topCardFromWaste, movedCard);
 		assertEquals(movedCard, topCardFromTableausToMove);
 
+		//mover carta que no cumple criterios de valor y/o color
+		assertNull(wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack(), 0));
+		assertNull(wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack(), 0));
+		
+		//mover carta a tableau vacío
+		assertNotNull(wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack(), 1));
+		
 		//se presupone que en este punto, waste no tiene cartas
 		assertNull(wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack(), 0));
 	}

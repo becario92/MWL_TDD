@@ -10,7 +10,9 @@ public class WasteToTableausMoveController extends MoveController {
 	
 	@Override
 	protected boolean canMove(Stack<Card> from, Stack<Card> to) {
-		if(from.peek().getValue() == to.peek().getValue() - 1 && from.peek().getColor() != to.peek().getColor())
+		if(to.isEmpty())
+			return true;
+		else if(from.peek().getValue() == to.peek().getValue() - 1 && from.peek().getColor() != to.peek().getColor())
 			return true;
 		else
 			return false;
