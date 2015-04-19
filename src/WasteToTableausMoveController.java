@@ -5,8 +5,10 @@ public class WasteToTableausMoveController extends MoveController {
 
 	@Override
 	protected boolean canMove(Stack<Card> from, Stack<Card> to) {
-		// TODO Auto-generated method stub
-		return false;
+		if(from.peek().getValue() == to.peek().getValue() - 1)
+			return true;
+		else
+			return false;
 	}
 
 }

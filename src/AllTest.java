@@ -103,12 +103,15 @@ public class AllTest {
 	@Test
 	public void wasteToTableausMoveControllerTest() {
 		int sizeWaste = wasteToTableausMoveController.getWasteStack().size();
+		int sizeTableauToMove = wasteToTableausMoveController.getTableausStack().get(0).size();
 		
 		Card topCardFromWaste = wasteToTableausMoveController.getWasteStack().peek();
 		assertTrue(topCardFromWaste.isUncovered());
 		Card movedCard = wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack().get(0));
 		Card topCardFromTableausToMove = wasteToTableausMoveController.getTableausStack().get(0).peek();
 		assertTrue(topCardFromTableausToMove.isUncovered());
+		
+		assertEquals(sizeWaste - 1, wasteToTableausMoveController.getWasteStack().size());
 	}
 
 }
