@@ -35,4 +35,9 @@ public class Card {
 		this.value = value;
 	}
 
+	public Card uncover() {
+		this.setUncovered(true);
+		return this;
+	}
+
 }

@@ -1,7 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,24 +14,22 @@ public class DeckToWasteMoveControllerTest {
 	
 	@Test
 	public void moveTest() {
-		int sizeDeck = deckToWasteMoveController.getSizeDeck();
-		int sizeWaste = deckToWasteMoveController.getSizeWaste();
-		ArrayList<Integer> sizeFoundations = deckToWasteMoveController.getSizeFoundations();
-		Card topCardFromDeck = deckToWasteMoveController.getTopCardFromDeck();
+		int sizeDeck = deckToWasteMoveController.getDeckStack().size();
+		int sizeWaste = deckToWasteMoveController.getWasteStack().size();
+		
+		Card topCardFromDeck = deckToWasteMoveController.getDeckStack().peek();
 		assertFalse(topCardFromDeck.isUncovered());
+		Card movedCard = deckToWasteMoveController.move(deckToWasteMoveController.getDeckStack(), deckToWasteMoveController.getWasteStack());
+		Card topCardFromWaste = deckToWasteMoveController.getWasteStack().peek();
+		assertTrue(topCardFromWaste.isUncovered());
 		
-		Card movedCard = deckToWasteMoveController.move();
-		
-		Card topCardFromWaste = deckToWasteMoveController.getTopCardFromWaste();
-		
-		assertEquals(sizeDeck - 1, deckToWasteMoveController.getSizeDeck());
-		assertEquals(sizeWaste + 1, deckToWasteMoveController.getSizeWaste());
-		assertEquals(sizeFoundations, deckToWasteMoveController.getSizeFoundations());
+		assertEquals(sizeDeck - 1, deckToWasteMoveController.getDeckStack().size());
+		assertEquals(sizeWaste + 1, deckToWasteMoveController.getWasteStack().size());
 		
 		assertEquals(topCardFromDeck, movedCard);
 		assertEquals(movedCard, topCardFromWaste);
 		
-		assertNull(deckToWasteMoveController.move());
+		assertNull(deckToWasteMoveController.move(deckToWasteMoveController.getDeckStack(), deckToWasteMoveController.getWasteStack()));
 	}
 
 }

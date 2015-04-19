@@ -23,7 +23,7 @@ public abstract class MoveController {
 		}
 	}
 
-	public Card move(Stack<Card> from, Stack<Card> to) {
+	protected Card move(Stack<Card> from, Stack<Card> to) {
 		if(canMove(from, to)) {
 			to.push(from.pop());
 			return to.peek();
