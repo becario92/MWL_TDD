@@ -16,12 +16,14 @@ public class AllTest {
 	private StartGameController startGameController;
 	private DeckToWasteMoveController deckToWasteMoveController;
 	private WasteToFoundationMoveController wasteToFoundationMoveController;
+	private WasteToTableausMoveController wasteToTableausMoveController;
 
 	@Before
 	public void before() {
 		startGameController = new StartGameController();
 		deckToWasteMoveController = new DeckToWasteMoveController();
 		wasteToFoundationMoveController = new WasteToFoundationMoveController();
+		wasteToTableausMoveController = new WasteToTableausMoveController();
 	}
 	
 	@Test
@@ -94,6 +96,11 @@ public class AllTest {
 		assertEquals(movedCard, topCardFromFoundationOfTopCardFromWasteSuit);
 
 		assertNull(wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack()));
+	}
+	
+	@Test
+	public void wasteToTableausMoveControllerTest() {
+		
 	}
 
 }
