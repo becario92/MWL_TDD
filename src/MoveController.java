@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -7,6 +8,7 @@ public abstract class MoveController {
 	private Stack<Card> deckStack;
 	private Stack<Card> wasteStack;
 	private HashMap<Suit, Stack<Card>> foundationsStack;
+	private ArrayList<Stack<Card>> tableausStack;
 	
 	protected MoveController() {
 		deckStack = new Stack<Card>();
@@ -21,6 +23,12 @@ public abstract class MoveController {
 			foundationStack.push(new Card(true, suit, 0));
 			foundationsStack.put(suit, foundationStack);
 		}
+		
+		tableausStack = new ArrayList<Stack<Card>>();
+		for(int i = 0; i < 7; i++) {
+			tableausStack.add(new Stack<Card>());
+		}
+		tableausStack.get(0).push(new Card(true, Suit.HEARTS, 2));
 	}
 
 	protected Card move(Stack<Card> from, Stack<Card> to) {
@@ -50,6 +58,10 @@ public abstract class MoveController {
 
 	protected HashMap<Suit, Stack<Card>> getFoundationsStack() {
 		return foundationsStack;
+	}
+	
+	protected ArrayList<Stack<Card>> getTableausStack() {
+		return tableausStack;
 	}
 	
 }

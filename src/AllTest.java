@@ -106,6 +106,9 @@ public class AllTest {
 		
 		Card topCardFromWaste = wasteToTableausMoveController.getWasteStack().peek();
 		assertTrue(topCardFromWaste.isUncovered());
+		Card movedCard = wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack().get(0));
+		Card topCardFromTableausToMove = wasteToTableausMoveController.getTableausStack().get(0).peek();
+		assertTrue(topCardFromTableausToMove.isUncovered());
 	}
 
 }
