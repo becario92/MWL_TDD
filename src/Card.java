@@ -3,10 +3,12 @@ public class Card {
 
 	private boolean uncovered;
 	private Suit suit;
+	private int value;
 	
-	public Card(boolean uncovered, Suit suit) {
+	public Card(boolean uncovered, Suit suit, int value) {
 		this.uncovered = uncovered;
 		this.suit = suit;
+		this.value = value;
 	}
 
 	public boolean isUncovered() {
@@ -23,6 +25,14 @@ public class Card {
 
 	public void setSuit(Suit suit) {
 		this.suit = suit;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 }

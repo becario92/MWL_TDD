@@ -33,7 +33,7 @@ public class StartGameController {
 		ArrayList<Stack<Card>> uncoveredCardsStackTableaus = new ArrayList<Stack<Card>>();
 		for (int i = 0; i < 7; i++) {
 			Stack<Card> uncoveredCardsStack = new Stack<Card>();
-			uncoveredCardsStack.add(new Card(true, Suit.SPADES));
+			uncoveredCardsStack.add(new Card(true, Suit.SPADES, 0));
 			uncoveredCardsStackTableaus.add(uncoveredCardsStack);
 		}
 		return uncoveredCardsStackTableaus;

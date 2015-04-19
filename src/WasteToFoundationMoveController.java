@@ -1,7 +1,5 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
-
 
 public class WasteToFoundationMoveController {
 
@@ -11,13 +9,14 @@ public class WasteToFoundationMoveController {
 	
 	WasteToFoundationMoveController() {
 		wasteStack = new Stack<Card>();
-		wasteStack.push(new Card(true, Suit.SPADES));
+		wasteStack.push(new Card(true, Suit.SPADES, 1));
 		
 		foundationsStack = new HashMap<Suit, Stack<Card>>();
-		foundationsStack.put(Suit.SPADES, new Stack<Card>());
-		foundationsStack.put(Suit.CLUBS, new Stack<Card>());
-		foundationsStack.put(Suit.DIAMONDS, new Stack<Card>());
-		foundationsStack.put(Suit.HEARTS, new Stack<Card>());
+		for(Suit suit : Suit.values()) {
+			Stack<Card> foundationStack = new Stack<Card>();
+			foundationStack.push(new Card(true, suit, 0));
+			foundationsStack.put(suit, foundationStack);
+		}
 	}
 	
 	public void setSizeWaste(int sizeWaste) {
@@ -54,6 +53,21 @@ public class WasteToFoundationMoveController {
 		for(Suit suit : Suit.values())
 			sizeFoundationsStack.put(suit, foundationsStack.get(suit).size());
 		return sizeFoundationsStack;
+	}
+
+	protected Stack<Card> getWasteStack() {
+		return wasteStack;
+	}
+
+	protected void setWasteStack(Stack<Card> wasteStack) {
+		this.wasteStack = wasteStack;
+	}
+
+	public boolean canMove() {
+		if(wasteStack.peek().getValue() == foundationsStack.get(wasteStack.peek().getSuit()).peek().getValue() + 1)
+			return true;
+		else
+			return false;
 	}
 
 }

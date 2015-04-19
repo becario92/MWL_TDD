@@ -18,7 +18,7 @@ public class DeckToWasteMoveController {
 		sizeFoundations = new ArrayList<Integer>();
 		
 		deckStack = new Stack<Card>();
-		deckStack.push(new Card(false, Suit.SPADES));
+		deckStack.push(new Card(false, Suit.SPADES, 1));
 		wasteStack = new Stack<Card>();
 	}
 
