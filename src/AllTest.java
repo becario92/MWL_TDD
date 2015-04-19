@@ -113,6 +113,9 @@ public class AllTest {
 		
 		assertEquals(sizeWaste - 1, wasteToTableausMoveController.getWasteStack().size());
 		assertEquals(sizeTableauToMove + 1, wasteToTableausMoveController.getTableausStack().get(0).size());
+		
+		assertEquals(topCardFromWaste, movedCard);
+		assertEquals(movedCard, topCardFromTableausToMove);
 	}
 
 }
