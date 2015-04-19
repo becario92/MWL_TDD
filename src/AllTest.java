@@ -25,19 +25,19 @@ public class AllTest {
 		wasteToFoundationMoveController = new WasteToFoundationMoveController();
 		wasteToTableausMoveController = new WasteToTableausMoveController();
 	}
-	
+
 	@Test
 	public void startGameControllerTest() {
 		assertEquals(0, startGameController.sizeWaste());
-		
+
 		ArrayList<Integer> sizeFoundations = startGameController.sizeFoundations();
 		assertEquals(4, sizeFoundations.size());
 		for (int sizeFoundation : sizeFoundations) {
 			assertEquals(0, sizeFoundation);
 		}
-		
+
 		assertEquals(24, startGameController.sizeDeck());
-		
+
 		ArrayList<Integer> sizeTableaus = startGameController.sizeCoveredCardsTableaus();
 		ArrayList<Stack<Card>> uncoveredCardsStackTableaus = startGameController.uncoveredCardsStackTableaus();
 		assertEquals(7, sizeTableaus.size());
@@ -50,24 +50,24 @@ public class AllTest {
 			assertTrue(uncoveredCardsStack.peek().isUncovered()); //cima
 		}
 	}
-	
+
 	@Test
 	public void deckToWasteMoveControllerTest() {
 		int sizeDeck = deckToWasteMoveController.getDeckStack().size();
 		int sizeWaste = deckToWasteMoveController.getWasteStack().size();
-		
+
 		Card topCardFromDeck = deckToWasteMoveController.getDeckStack().peek();
 		assertFalse(topCardFromDeck.isUncovered());
 		Card movedCard = deckToWasteMoveController.move(deckToWasteMoveController.getDeckStack(), deckToWasteMoveController.getWasteStack());
 		Card topCardFromWaste = deckToWasteMoveController.getWasteStack().peek();
 		assertTrue(topCardFromWaste.isUncovered());
-		
+
 		assertEquals(sizeDeck - 1, deckToWasteMoveController.getDeckStack().size());
 		assertEquals(sizeWaste + 1, deckToWasteMoveController.getWasteStack().size());
-		
+
 		assertEquals(topCardFromDeck, movedCard);
 		assertEquals(movedCard, topCardFromWaste);
-		
+
 		//se presupone que en este punto, waste no tiene cartas
 		assertNull(deckToWasteMoveController.move(deckToWasteMoveController.getDeckStack(), deckToWasteMoveController.getWasteStack()));
 	}
@@ -99,23 +99,26 @@ public class AllTest {
 		//se presupone que en este punto, waste no tiene cartas
 		assertNull(wasteToFoundationMoveController.move(wasteToFoundationMoveController.getWasteStack(), wasteToFoundationMoveController.getFoundationsStack()));
 	}
-	
+
 	@Test
 	public void wasteToTableausMoveControllerTest() {
 		int sizeWaste = wasteToTableausMoveController.getWasteStack().size();
 		int sizeTableauToMove = wasteToTableausMoveController.getTableausStack().get(0).size();
-		
+
 		Card topCardFromWaste = wasteToTableausMoveController.getWasteStack().peek();
 		assertTrue(topCardFromWaste.isUncovered());
-		Card movedCard = wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack().get(0));
+		Card movedCard = wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack(), 0);
 		Card topCardFromTableausToMove = wasteToTableausMoveController.getTableausStack().get(0).peek();
 		assertTrue(topCardFromTableausToMove.isUncovered());
-		
+
 		assertEquals(sizeWaste - 1, wasteToTableausMoveController.getWasteStack().size());
 		assertEquals(sizeTableauToMove + 1, wasteToTableausMoveController.getTableausStack().get(0).size());
-		
+
 		assertEquals(topCardFromWaste, movedCard);
 		assertEquals(movedCard, topCardFromTableausToMove);
+
+		//se presupone que en este punto, waste no tiene cartas
+		assertNull(wasteToTableausMoveController.move(wasteToTableausMoveController.getWasteStack(), wasteToTableausMoveController.getTableausStack(), 0));
 	}
 
 }
